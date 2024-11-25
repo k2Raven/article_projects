@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Создание статьи{% endblock %}
 
+{% block content %}
 <h1>Create Article</h1>
 
 <form action="{% url 'article_add' %}" method="post">
@@ -22,6 +18,4 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
-
-</body>
-</html>
+{% endblock %}
