@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from webapp.models import Article
 
 
@@ -9,9 +9,15 @@ def index_view(request):
     }
     return render(request, 'index.html', context=context)
 
-def article_view(request):
-    article_id = request.GET.get('id')
-    article = Article.objects.get(id=article_id)
+def article_view(request, *args, pk, **kwargs):
+    # print(args, kwargs)
+    # print(pk)
+    # article_id = request.GET.get('id')
+    try:
+        article = Article.objects.get(id=pk)
+    except Article.DoesNotExist:
+        # return HttpResponseNotFound('Article not found')
+        raise Http404
     return render(request, 'article_view.html', context={'article': article})
 
 def article_create_view(request):
