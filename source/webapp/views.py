@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from webapp.models import Article
 
@@ -27,5 +28,6 @@ def article_create_view(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         author = request.POST.get('author')
-        Article.objects.create(title=title, content=content, author=author)
-        return HttpResponseRedirect('/')
+        article = Article.objects.create(title=title, content=content, author=author)
+        url = reverse('article_detail', kwargs={'pk': article.id})
+        return HttpResponseRedirect(url)
