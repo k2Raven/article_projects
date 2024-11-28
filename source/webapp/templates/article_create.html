@@ -16,6 +16,15 @@
     <label>Author:</label><br/>
     <input type="text" name="author"/><br/>
     <br/>
+    
+    <label>Genre:</label><br/>
+    <select name="genre_id">
+        {% for genre in genres %}
+            <option value="{{ genre.id }}">{{ genre.title }}</option>
+        {% endfor %}
+    </select>
+    <br/>
+    <br/>
     <input type="submit" value="Send"/>
 </form>
 {% endblock %}
