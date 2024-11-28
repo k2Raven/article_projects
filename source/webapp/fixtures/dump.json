@@ -1,5 +1,29 @@
 [
 {
+  "model": "webapp.genre",
+  "pk": 1,
+  "fields": {
+    "title": "Жанр 1",
+    "content": "йцуйвйц"
+  }
+},
+{
+  "model": "webapp.genre",
+  "pk": 2,
+  "fields": {
+    "title": "Жанр 2",
+    "content": ""
+  }
+},
+{
+  "model": "webapp.genre",
+  "pk": 3,
+  "fields": {
+    "title": "Жанр 3",
+    "content": null
+  }
+},
+{
   "model": "webapp.article",
   "pk": 2,
   "fields": {
@@ -7,7 +31,8 @@
     "author": "Илья",
     "content": "йцуй\r\nвф\r\nффывфывфауйцйацйайц",
     "created_at": "2024-11-21T13:46:49.330Z",
-    "updated_at": "2024-11-21T13:46:49.330Z"
+    "updated_at": "2024-11-28T13:42:15.814Z",
+    "genre": 3
   }
 },
 {
@@ -18,7 +43,8 @@
     "author": "Name",
     "content": "qwe",
     "created_at": "2024-11-21T14:16:58.251Z",
-    "updated_at": "2024-11-21T14:16:58.252Z"
+    "updated_at": "2024-11-21T14:16:58.252Z",
+    "genre": null
   }
 },
 {
@@ -29,7 +55,8 @@
     "author": "User 2",
     "content": "qwe",
     "created_at": "2024-11-21T14:19:53.510Z",
-    "updated_at": "2024-11-21T14:19:53.510Z"
+    "updated_at": "2024-11-21T14:19:53.510Z",
+    "genre": null
   }
 },
 {
@@ -40,7 +67,8 @@
     "author": "Name",
     "content": "new content",
     "created_at": "2024-11-21T14:24:24.024Z",
-    "updated_at": "2024-11-21T14:24:24.024Z"
+    "updated_at": "2024-11-21T14:24:24.024Z",
+    "genre": null
   }
 },
 {
@@ -51,7 +79,8 @@
     "author": "Алексей",
     "content": "йцу\r\nйцуйвфыв\r\nвйцвйцвйцв",
     "created_at": "2024-11-21T14:31:26.818Z",
-    "updated_at": "2024-11-21T14:31:26.818Z"
+    "updated_at": "2024-11-21T14:31:26.818Z",
+    "genre": null
   }
 },
 {
@@ -62,7 +91,20 @@
     "author": "Алексей",
     "content": "qwe qwe",
     "created_at": "2024-11-21T14:41:28.369Z",
-    "updated_at": "2024-11-21T14:41:28.369Z"
+    "updated_at": "2024-11-28T13:34:05.024Z",
+    "genre": 1
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 8,
+  "fields": {
+    "title": "qwe",
+    "author": "qwe",
+    "content": "qwe",
+    "created_at": "2024-11-28T13:52:17.520Z",
+    "updated_at": "2024-11-28T13:52:17.520Z",
+    "genre": 2
   }
 },
 {
@@ -70,7 +112,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$870000$0gzWeha1hq6CSTiqdJ33jB$DAsiQ1jhVa+3LxCawNGFDPdZ8O8ud0G8yw452MYUaq4=",
-    "last_login": "2024-11-21T13:42:02.986Z",
+    "last_login": "2024-11-28T13:32:21.307Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
