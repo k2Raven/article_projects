@@ -17,6 +17,7 @@
                         <p class="card-text">Автор: {{ article.author }}</p>
                         <a href="{% url "article_detail" article.pk %}" class="btn btn-primary">Подробнее</a>
                         <a href="{% url "article_update" article.pk %}" class="btn btn-primary">Изменить</a>
+                        <a href="{% url "article_delete" article.pk %}" class="btn btn-primary">Удалить</a>
                     </div>
                 </div>
             </div>

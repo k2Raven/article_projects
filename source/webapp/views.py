@@ -49,3 +49,8 @@ def article_update_view(request, *args, pk, **kwargs):
             return redirect('article_detail', pk=article.id)
         else:
             return render(request,'article_update.html', context={'form': form})
+
+def article_delete_view(request, *args, pk, **kwargs):
+    article = get_object_or_404(Article, pk=pk)
+    article.delete()
+    return redirect('articles')
