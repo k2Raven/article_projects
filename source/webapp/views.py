@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import Article
+from webapp.validate import article_validator
 
 
 def index_view(request):
@@ -19,7 +20,17 @@ def article_create_view(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         author = request.POST.get('author')
-        article = Article.objects.create(title=title, content=content, author=author)
+
+        article = Article(title=title, content=content, author=author)
+
+        errors = article_validator(article)
+
+        if errors:
+            return render(request,
+                          'article_create.html',
+                          context={'errors': errors, 'article': article})
+
+        article.save()
         return redirect('article_detail', pk=article.id)
 
 def article_update_view(request, *args, pk, **kwargs):
@@ -30,5 +41,13 @@ def article_update_view(request, *args, pk, **kwargs):
         article.title = request.POST.get('title')
         article.content = request.POST.get('content')
         article.author = request.POST.get('author')
+
+        errors = article_validator(article)
+
+        if errors:
+            return render(request,
+                          'article_update.html',
+                          context={'errors': errors, 'article': article})
+
         article.save()
         return redirect('article_detail', pk=article.id)
