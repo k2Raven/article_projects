@@ -1,28 +1,36 @@
 {% csrf_token %}
 
-<label>Title:</label><br/>
-{% if errors.title %}
-    <input type="text" name="title" class="border border-danger border-3" value="{{ article.title }}"/><br/>
-    <p class="text-danger">{{ errors.title }}</p>
-{% else %}
-    <input type="text" name="title" value="{{ article.title }}"/><br/>
-{% endif %}
+{#{{ form.as_p }}#}
+
+{#{% for error in form.non_field_errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+
+{% for field in form %}
+    <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    {% for error in field.errors %}
+       <p class="text-danger">{{ error }}</p>
+    {% endfor %}
+    <p>{{ field }}</p>
+{% endfor %}
+
+{#<p><label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label></p>#}
+{#{% for error in form.title.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.title }}</p>#}
+{##}
+{#<p><label for="{{ form.author.id_for_label }}">{{ form.author.label }}</label></p>#}
+{#{% for error in form.author.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.author }}</p>#}
+{##}
+{#<p><label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label></p>#}
+{#{% for error in form.content.errors %}#}
+{#   <p class="text-danger">{{ error }}</p>#}
+{#{% endfor %}#}
+{#<p>{{ form.content }}</p>#}
 
 
-<label>Text:</label><br/>
-{% if errors.content %}
-    <textarea name="content"  class="border border-danger border-3" >{{ article.content }}</textarea><br/>
-    <p class="text-danger">{{ errors.content }}</p>
-{% else %}
-    <textarea name="content">{{ article.content }}</textarea><br/>
-{% endif %}
-
-<label>Author:</label><br/>
-{% if errors.author %}
-    <input type="text" name="author" class="border border-danger border-3" value="{{ article.author }}"/><br/>
-    <p class="text-danger">{{ errors.author }}</p>
-{% else %}
-    <input type="text" name="author" value="{{ article.author }}"/><br/>
-{% endif %}
-<br/>
 <input type="submit" value="{{ button_text }}"/>
