@@ -2,20 +2,9 @@
 {% block title %}Создание статьи{% endblock %}
 
 {% block content %}
-<h1>Create Article</h1>
+<h1>Создание Статьи</h1>
 
 <form action="{% url 'article_add' %}" method="post">
-    {% csrf_token %}
-    
-    <label>Title:</label><br/>
-    <input type="text" name="title"/><br/>
-    
-    <label>Text:</label><br/>
-    <textarea name="content"></textarea><br/>
-    
-    <label>Author:</label><br/>
-    <input type="text" name="author"/><br/>
-    <br/>
-    <input type="submit" value="Send"/>
+    {% include 'partial/article_form.html' with button_text="Создать" %}
 </form>
 {% endblock %}
