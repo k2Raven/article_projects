@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.forms import ArticleForm
 from webapp.models import Article
-from webapp.validate import article_validator
 
 
 def index_view(request):
