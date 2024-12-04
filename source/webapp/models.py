@@ -27,6 +27,7 @@ class Article(models.Model):
                               on_delete=models.RESTRICT,
                               related_name='articles', # article_set
                               verbose_name='Жанр')
+    publish_date = models.DateField(null=True, verbose_name='Дата публикации')
 
     def __str__(self):
         return f'{self.id}. {self.title}'
