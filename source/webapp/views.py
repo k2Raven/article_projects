@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.forms import ArticleForm
 from webapp.models import Article
-from webapp.validate import article_validator
 
 
 def index_view(request):
@@ -27,6 +26,9 @@ def article_create_view(request):
                 author = form.cleaned_data['author'],
                 content = form.cleaned_data['content'],
             )
+            tags = form.cleaned_data['tags']
+            print(tags)
+            article.tags.set(tags)
             return redirect('article_detail', pk=article.id)
 
         else:
@@ -37,7 +39,12 @@ def article_create_view(request):
 def article_update_view(request, *args, pk, **kwargs):
     article = get_object_or_404(Article, pk=pk)
     if request.method == 'GET':
-        form = ArticleForm(initial={'title': article.title, 'author': article.author, 'content': article.content})
+        form = ArticleForm(initial={
+            'title': article.title,
+            'author': article.author,
+            'content': article.content,
+            'tags': article.tags.all(),
+        })
         return render(request, 'article_update.html', context={'form': form})
     elif request.method == 'POST':
         form = ArticleForm(data=request.POST)
@@ -46,6 +53,8 @@ def article_update_view(request, *args, pk, **kwargs):
             article.author = form.cleaned_data['author']
             article.content = form.cleaned_data['content']
             article.save()
+            tags = form.cleaned_data['tags']
+            article.tags.set(tags)
             return redirect('article_detail', pk=article.id)
         else:
             return render(request,'article_update.html', context={'form': form})
