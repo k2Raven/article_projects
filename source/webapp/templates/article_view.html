@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{article.title}}{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block menu %}
     <li class="nav-item">
@@ -11,7 +11,35 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{article.title}}</h1>
-<p>{{article.content}}</p>
-<p>{{ article.author }}</p>
+    <div class="card">
+        <div class="card-header">
+            Автор: {{ article.author }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text">{{ article.content }}</p>
+            {% if article.tags.exists %}
+                <p class="card-text">
+                    Теги: {% for tag in article.tags.all %}{{ tag.name }}{% if forloop.last %}.{% else %},
+                {% endif %} {% endfor %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <h3 class="mt-3">Комментарии:</h3>
+    <div class="row">
+        {% for comment in article.comments.all %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Автор: {{ comment.author }}</h5>
+                        <p class="card-text">{{ comment.text }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Комментариев нет</p>
+        {% endfor %}
+    </div>
 {% endblock %}
