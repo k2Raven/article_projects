@@ -2,7 +2,7 @@
 {% block title %}Изменение Статьи{% endblock %}
 
 {% block content %}
-<h1>Изменение Статьи</h1>
+<h1>Изменение Статьи "{{ article.title }}"</h1>
 
 <form action="" method="post">
     {% include 'partial/article_form.html' with button_text="Изменить" %}
