@@ -30,14 +30,7 @@ class ArticleCreateView(FormView):
     #     return reverse('article_detail', kwargs={'pk': self.article.pk})
 
     def form_valid(self, form):
-        article = Article.objects.create(
-            title=form.cleaned_data['title'],
-            author=form.cleaned_data['author'],
-            content=form.cleaned_data['content'],
-        )
-        tags = form.cleaned_data['tags']
-        print(tags)
-        article.tags.set(tags)
+        article = form.save()
         return redirect('article_detail', pk=article.pk)
 
 class ArticleUpdateView(FormView):
@@ -56,21 +49,13 @@ class ArticleUpdateView(FormView):
     def get_object(self):
         return get_object_or_404(Article, pk=self.kwargs.get('pk'))
 
-    def get_initial(self):
-        return {
-            'title': self.article.title,
-            'author': self.article.author,
-            'content': self.article.content,
-            'tags': self.article.tags.all(),
-        }
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['instance'] = self.get_object()
+        return kwargs
 
     def form_valid(self, form):
-        self.article.title = form.cleaned_data['title']
-        self.article.author = form.cleaned_data['author']
-        self.article.content = form.cleaned_data['content']
-        self.article.save()
-        tags = form.cleaned_data['tags']
-        self.article.tags.set(tags)
+        self.article = form.save()
         return redirect('article_detail', pk=self.article.id)
 
 class ArticleDeleteView(View):
