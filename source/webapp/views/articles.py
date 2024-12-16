@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse, reverse_lazy
 from django.views.generic import View, TemplateView, FormView
 from webapp.forms import ArticleForm
 from webapp.models import Article
@@ -10,11 +9,11 @@ class ArticleListView(View):
         context = {
             'articles': Article.objects.all()
         }
-        return render(request, 'index.html', context=context)
+        return render(request, 'articles/index.html', context=context)
 
 
 class ArticleDetailView(TemplateView):
-    template_name = 'article_view.html'
+    template_name = 'articles/article_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -23,7 +22,7 @@ class ArticleDetailView(TemplateView):
 
 
 class ArticleCreateView(FormView):
-    template_name = 'article_create.html'
+    template_name = 'articles/article_create.html'
     form_class = ArticleForm
 
     # def get_success_url(self):
@@ -34,7 +33,7 @@ class ArticleCreateView(FormView):
         return redirect('article_detail', pk=article.pk)
 
 class ArticleUpdateView(FormView):
-    template_name = 'article_update.html'
+    template_name = 'articles/article_update.html'
     form_class = ArticleForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -64,7 +63,7 @@ class ArticleDeleteView(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'article_delete.html', context={'article': self.article})
+        return render(request, 'articles/article_delete.html', context={'article': self.article})
 
     def post(self, request, *args, **kwargs):
         self.article.delete()
