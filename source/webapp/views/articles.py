@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.http import urlencode
-from django.views.generic import View, TemplateView, FormView, ListView
+from django.views.generic import View, TemplateView, FormView, ListView, DetailView
 from webapp.forms import ArticleForm, SearchForm
 from webapp.models import Article
 
@@ -43,12 +43,14 @@ class ArticleListView(ListView):
 
 
 
-class ArticleDetailView(TemplateView):
+class ArticleDetailView(DetailView):
     template_name = 'articles/article_view.html'
+    model = Article
+    context_object_name = 'article'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['article'] = get_object_or_404(Article, pk=self.kwargs.get('pk'))
+        context['comments'] = self.object.comments.order_by('-created_at')
         return context
 
 
