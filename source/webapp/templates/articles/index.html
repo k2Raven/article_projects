@@ -8,6 +8,9 @@
 
 {% block content %}
     <h1>Статьи</h1>
+    <div class="my-2">
+     {% include 'partial/search_form.html' with form=search_form %}
+    </div>
     {% if is_paginated %}
         <div class="my-2">
         {% include 'partial/pagination.html' %}
