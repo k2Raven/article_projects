@@ -6,13 +6,11 @@ from webapp.models import Article
 
 class ArticleListView(ListView):
     model = Article
-    # queryset = Article.objects.filter(title__icontains='article')
     template_name = 'articles/index.html'
     context_object_name = 'articles'
     ordering = ['-created_at']
-
-    # def get_queryset(self):
-    #     return super().get_queryset().filter(title__icontains='article')
+    paginate_by = 3
+    paginate_orphans = 2
 
 
 class ArticleDetailView(TemplateView):
