@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from webapp.models import BaseModel
 
@@ -16,3 +17,6 @@ class Article(BaseModel):
         db_table = 'articles'
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'pk': self.pk})
