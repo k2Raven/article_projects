@@ -3,3 +3,5 @@ from .articles import (ArticleListView,
                        ArticleDetailView,
                        ArticleUpdateView,
                        ArticleDeleteView)
+
+from .comments import CommentsCreateView

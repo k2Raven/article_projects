@@ -5,6 +5,6 @@
 <h1>Создание Статьи</h1>
 
 <form action="{% url 'article_add' %}" method="post">
-    {% include 'partial/article_form.html' with button_text="Создать" %}
+    {% include 'partial/form.html' with button_text="Создать" %}
 </form>
 {% endblock %}
