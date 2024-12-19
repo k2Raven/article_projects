@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from webapp.forms import CommentForm
 from webapp.models import Comment, Article
@@ -26,3 +26,20 @@ class CommentsCreateView(CreateView):
 
     # def get_success_url(self):
     #     return reverse('article_detail', kwargs={'pk': self.object.article.pk})
+
+class CommentsUpdateView(UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'comments/comment_update.html'
+
+    def get_success_url(self):
+        return reverse('article_detail', kwargs={'pk': self.object.article.pk})
+
+
+class CommentsDeleteView(DeleteView):
+    model = Comment
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return redirect('article_detail', pk=self.object.article.pk)

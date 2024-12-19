@@ -4,4 +4,4 @@ from .articles import (ArticleListView,
                        ArticleUpdateView,
                        ArticleDeleteView)
 
-from .comments import CommentsCreateView
+from .comments import CommentsCreateView, CommentsUpdateView, CommentsDeleteView
