@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.views.generic import View, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from webapp.forms import ArticleForm, SearchForm
 from webapp.models import Article
+
 
 
 class ArticleListView(ListView):
@@ -16,6 +18,9 @@ class ArticleListView(ListView):
     paginate_orphans = 2
 
     def dispatch(self, request, *args, **kwargs):
+        # print(request.user)
+        # print(request.user.is_authenticated)
+        # print(request.user.is_anonymous)
         self.search_form = self.get_search_form()
         self.search_value = self.get_search_value()
         return super().dispatch(request, *args, **kwargs)
@@ -54,7 +59,7 @@ class ArticleDetailView(DetailView):
         return context
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(LoginRequiredMixin, CreateView):
     template_name = 'articles/article_create.html'
     form_class = ArticleForm
     # model = Article
@@ -62,6 +67,11 @@ class ArticleCreateView(CreateView):
 
     # def get_success_url(self):
     #     return reverse('article_detail', kwargs={'pk': self.object.pk})
+    # def dispatch(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         return super().dispatch(request, *args, **kwargs)
+    #     else:
+    #         return redirect('accounts:login')
 
 
 class ArticleUpdateView(UpdateView):
