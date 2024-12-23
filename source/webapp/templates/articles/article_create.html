@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Создание Статьи</h1>
 
-<form action="{% url 'article_add' %}" method="post">
+<form action="{% url 'webapp:article_add' %}" method="post">
     {% include 'partial/form.html' with button_text="Создать" %}
 </form>
 {% endblock %}

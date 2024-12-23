@@ -33,7 +33,7 @@ class CommentsUpdateView(UpdateView):
     template_name = 'comments/comment_update.html'
 
     def get_success_url(self):
-        return reverse('article_detail', kwargs={'pk': self.object.article.pk})
+        return reverse('webapp:article_detail', kwargs={'pk': self.object.article.pk})
 
 
 class CommentsDeleteView(DeleteView):
@@ -42,4 +42,4 @@ class CommentsDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.delete()
-        return redirect('article_detail', pk=self.object.article.pk)
+        return redirect('webapp:article_detail', pk=self.object.article.pk)

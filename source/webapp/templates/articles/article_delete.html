@@ -10,5 +10,5 @@
     {% csrf_token %}
         <input type="submit" value="Да">
     </form>
-    <a href="{% url 'article_detail' article.id %}">Нет</a>
+    <a href="{% url 'webapp:article_detail' article.id %}">Нет</a>
 {% endblock %}

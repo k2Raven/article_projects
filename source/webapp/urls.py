@@ -2,6 +2,8 @@ from django.urls import path
 from webapp.views import ArticleListView, ArticleCreateView, ArticleDetailView, ArticleUpdateView, ArticleDeleteView, \
     CommentsCreateView, CommentsUpdateView, CommentsDeleteView
 
+app_name = 'webapp'
+
 urlpatterns = [
     path('', ArticleListView.as_view(), name='articles'),
     path('article/add/', ArticleCreateView.as_view(), name='article_add'),
