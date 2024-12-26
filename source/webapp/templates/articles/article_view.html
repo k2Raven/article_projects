@@ -2,15 +2,22 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block menu %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:article_update' article.id %}">Изменить</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:article_delete' article.id %}">Удалить</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:comment_add'  article.id  %}">Добавить комментарий</a>
-    </li>
+    {% if perms.webapp.change_article or request.user == article.author %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:article_update' article.id %}">Изменить</a>
+        </li>
+    {% endif %}
+
+    {% if perms.webapp.delete_article or request.user == article.author %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:article_delete' article.id %}">Удалить</a>
+        </li>
+    {% endif %}
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:comment_add'  article.id %}">Добавить комментарий</a>
+        </li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -37,12 +44,18 @@
                     <div class="card-body">
                         <h5 class="card-title">Автор: {{ comment.author }}</h5>
                         <p class="card-text">{{ comment.text }}</p>
-                        <a href="{% url "webapp:comment_update" comment.pk %}" class="btn btn-primary">Изменить</a>
-                        <a href="{% url 'webapp:comment_delete' comment.pk %}" class="btn btn-primary">Удалить</a>
+
+                        {% if perms.webapp.change_comment or request.user == comment.author %}
+                            <a href="{% url "webapp:comment_update" comment.pk %}" class="btn btn-primary">Изменить</a>
+                        {% endif %}
+
+                        {% if perms.webapp.delete_comment or request.user == comment.author %}
+                            <a href="{% url 'webapp:comment_delete' comment.pk %}" class="btn btn-primary">Удалить</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            {% empty %}
+        {% empty %}
             <p>Комментариев нет</p>
         {% endfor %}
     </div>

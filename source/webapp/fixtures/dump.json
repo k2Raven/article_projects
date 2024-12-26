@@ -6,8 +6,12 @@
     "created_at": "2024-11-21T13:46:49.330Z",
     "updated_at": "2024-12-09T14:50:19.419Z",
     "title": "Статья 2",
-    "author": "Илья",
-    "content": "йцуй\r\nвф\r\nффывфывфауйцйацйайц"
+    "content": "йцуй\r\nвф\r\nффывфывфауйцйацйайц",
+    "author": 1,
+    "tags": [
+      1,
+      3
+    ]
   }
 },
 {
@@ -17,8 +21,9 @@
     "created_at": "2024-11-21T14:16:58.251Z",
     "updated_at": "2024-11-21T14:16:58.252Z",
     "title": "Title",
-    "author": "Name",
-    "content": "qwe"
+    "content": "qwe",
+    "author": 1,
+    "tags": []
   }
 },
 {
@@ -28,8 +33,9 @@
     "created_at": "2024-11-21T14:19:53.510Z",
     "updated_at": "2024-11-21T14:19:53.510Z",
     "title": "New article",
-    "author": "User 2",
-    "content": "qwe"
+    "content": "qwe",
+    "author": 1,
+    "tags": []
   }
 },
 {
@@ -39,8 +45,9 @@
     "created_at": "2024-11-21T14:24:24.024Z",
     "updated_at": "2024-11-21T14:24:24.024Z",
     "title": "New Title",
-    "author": "Name",
-    "content": "new content"
+    "content": "new content",
+    "author": 1,
+    "tags": []
   }
 },
 {
@@ -48,10 +55,14 @@
   "pk": 6,
   "fields": {
     "created_at": "2024-11-21T14:31:26.818Z",
-    "updated_at": "2024-11-21T14:31:26.818Z",
+    "updated_at": "2024-12-11T13:26:58.260Z",
     "title": "New Статья 1",
-    "author": "Алексей",
-    "content": "йцу\r\nйцуйвфыв\r\nвйцвйцвйцв"
+    "content": "йцу\r\nйцуйвфыв\r\nвйцвйцвйцв",
+    "author": 1,
+    "tags": [
+      1,
+      3
+    ]
   }
 },
 {
@@ -61,8 +72,12 @@
     "created_at": "2024-11-21T14:41:28.369Z",
     "updated_at": "2024-11-21T14:41:28.369Z",
     "title": "статья 123",
-    "author": "Алексей",
-    "content": "qwe qwe"
+    "content": "qwe qwe",
+    "author": 1,
+    "tags": [
+      1,
+      3
+    ]
   }
 },
 {
@@ -72,8 +87,9 @@
     "created_at": "2024-12-09T14:26:24.505Z",
     "updated_at": "2024-12-09T14:26:24.505Z",
     "title": "Test",
-    "author": "test",
-    "content": "cqwdqwcqwcqwcqw"
+    "content": "cqwdqwcqwcqwcqw",
+    "author": 1,
+    "tags": []
   }
 },
 {
@@ -81,10 +97,151 @@
   "pk": 9,
   "fields": {
     "created_at": "2024-12-09T14:28:56.464Z",
-    "updated_at": "2024-12-09T14:30:54.378Z",
+    "updated_at": "2024-12-11T13:27:06.582Z",
     "title": "Test 2",
-    "author": "test",
-    "content": "cqwdqwcqwcqwcqw"
+    "content": "cqwdqwcqwcqwcqw",
+    "author": 1,
+    "tags": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 11,
+  "fields": {
+    "created_at": "2024-12-11T13:26:44.909Z",
+    "updated_at": "2024-12-11T13:55:33.216Z",
+    "title": "Статья 3",
+    "content": "фвййцвйц\r\nвйцйцвйцвй",
+    "author": 1,
+    "tags": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 12,
+  "fields": {
+    "created_at": "2024-12-12T13:20:29.311Z",
+    "updated_at": "2024-12-12T13:20:29.311Z",
+    "title": "Article1",
+    "content": "Text text text",
+    "author": 1,
+    "tags": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 13,
+  "fields": {
+    "created_at": "2024-12-12T13:22:53.972Z",
+    "updated_at": "2024-12-12T13:27:03.153Z",
+    "title": "article2",
+    "content": "text text text textqwe",
+    "author": 1,
+    "tags": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 14,
+  "fields": {
+    "created_at": "2024-12-12T13:39:46.960Z",
+    "updated_at": "2024-12-12T13:49:45.685Z",
+    "title": "article3",
+    "content": "article3 text",
+    "author": 1,
+    "tags": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 15,
+  "fields": {
+    "created_at": "2024-12-12T13:51:47.637Z",
+    "updated_at": "2024-12-12T13:52:45.607Z",
+    "title": "article4",
+    "content": "text text text",
+    "author": 1,
+    "tags": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 16,
+  "fields": {
+    "created_at": "2024-12-12T13:55:52.260Z",
+    "updated_at": "2024-12-12T13:58:33.368Z",
+    "title": "Articer5",
+    "content": "text text text qwe",
+    "author": 1,
+    "tags": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 17,
+  "fields": {
+    "created_at": "2024-12-19T13:14:03.674Z",
+    "updated_at": "2024-12-19T13:14:03.674Z",
+    "title": "Article 10",
+    "content": "qwewq\r\nqwe\r\nqwe",
+    "author": 1,
+    "tags": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 18,
+  "fields": {
+    "created_at": "2024-12-26T14:16:22.137Z",
+    "updated_at": "2024-12-26T14:16:22.137Z",
+    "title": "Статья 234",
+    "content": "фывфыв\r\nфыв\r\nфв",
+    "author": 4,
+    "tags": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 19,
+  "fields": {
+    "created_at": "2024-12-26T14:17:40.156Z",
+    "updated_at": "2024-12-26T14:18:56.497Z",
+    "title": "Статья 2342",
+    "content": "фывфыв\r\nфыв\r\nфв",
+    "author": 4,
+    "tags": [
+      1,
+      3
+    ]
   }
 },
 {
@@ -95,7 +252,7 @@
     "updated_at": "2024-12-09T13:31:26.857Z",
     "article": 2,
     "text": "test",
-    "author": "Аноним"
+    "author": 1
   }
 },
 {
@@ -106,7 +263,7 @@
     "updated_at": "2024-12-09T13:32:36.435Z",
     "article": 2,
     "text": "test 2",
-    "author": "Аноним"
+    "author": 1
   }
 },
 {
@@ -116,8 +273,19 @@
     "created_at": "2024-12-09T13:33:14.643Z",
     "updated_at": "2024-12-09T13:33:14.643Z",
     "article": 2,
-    "text": "test",
-    "author": "Аноним"
+    "text": " test 3",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 4,
+  "fields": {
+    "created_at": "2024-12-26T14:19:01.851Z",
+    "updated_at": "2024-12-26T14:19:01.851Z",
+    "article": 19,
+    "text": "eqw",
+    "author": 4
   }
 },
 {
@@ -145,84 +313,6 @@
     "created_at": "2024-12-09T13:43:14.379Z",
     "updated_at": "2024-12-09T13:43:14.379Z",
     "name": "Django"
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 1,
-  "fields": {
-    "created_at": "2024-12-09T13:41:18.322Z",
-    "updated_at": "2024-12-09T13:41:18.322Z",
-    "article": 2,
-    "tag": 1
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 3,
-  "fields": {
-    "created_at": "2024-12-09T13:43:43.220Z",
-    "updated_at": "2024-12-09T13:43:43.220Z",
-    "article": 2,
-    "tag": 3
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 9,
-  "fields": {
-    "created_at": "2024-12-09T13:50:04.392Z",
-    "updated_at": "2024-12-09T13:50:04.392Z",
-    "article": 7,
-    "tag": 3
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 10,
-  "fields": {
-    "created_at": "2024-12-09T13:50:42.844Z",
-    "updated_at": "2024-12-09T13:50:42.844Z",
-    "article": 7,
-    "tag": 1
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 11,
-  "fields": {
-    "created_at": "2024-12-09T14:28:56.467Z",
-    "updated_at": "2024-12-09T14:28:56.467Z",
-    "article": 9,
-    "tag": 1
-  }
-},
-{
-  "model": "webapp.articletag",
-  "pk": 13,
-  "fields": {
-    "created_at": "2024-12-09T14:30:54.383Z",
-    "updated_at": "2024-12-09T14:30:54.383Z",
-    "article": 9,
-    "tag": 2
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$870000$0gzWeha1hq6CSTiqdJ33jB$DAsiQ1jhVa+3LxCawNGFDPdZ8O8ud0G8yw452MYUaq4=",
-    "last_login": "2024-11-21T13:42:02.986Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2024-11-21T13:41:51.104Z",
-    "groups": [],
-    "user_permissions": []
   }
 }
 ]

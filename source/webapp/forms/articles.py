@@ -16,7 +16,7 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ('title', 'author', 'content', 'tags')
+        fields = ('title',  'content', 'tags')
         widgets = {
             'tags': widgets.CheckboxSelectMultiple()
         }

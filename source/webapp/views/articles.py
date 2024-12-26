@@ -1,9 +1,10 @@
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.views.generic import View, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from webapp.forms import ArticleForm, SearchForm
 from webapp.models import Article
 
@@ -62,25 +63,37 @@ class ArticleDetailView(DetailView):
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     template_name = 'articles/article_create.html'
     form_class = ArticleForm
-    # model = Article
-    # fields = ['title', 'author', 'content', 'tags']
 
-    # def get_success_url(self):
-    #     return reverse('article_detail', kwargs={'pk': self.object.pk})
-    # def dispatch(self, request, *args, **kwargs):
-    #     if request.user.is_authenticated:
-    #         return super().dispatch(request, *args, **kwargs)
-    #     else:
-    #         return redirect('accounts:login')
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'articles/article_update.html'
     form_class = ArticleForm
     model = Article
+    permission_required = 'webapp.change_article'
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().author
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     if not request.user.is_authenticated:
+    #         return redirect('accounts:login')
+    #     if (not request.user.is_superuser
+    #             and not request.user.has_perm('webapp.change_article')
+    #             and request.user != self.object.author):
+    #         raise PermissionDenied
+    #     return super().dispatch(request, *args, **kwargs)
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'articles/article_delete.html'
     model = Article
     success_url = reverse_lazy('webapp:articles')
+    permission_required = 'webapp.delete_article'
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().author

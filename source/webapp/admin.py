@@ -8,11 +8,11 @@ class TagInline(admin.TabularInline):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'author', 'created_at']
+    list_display = ['id', 'title',  'created_at']
     list_display_links = ['id', 'title']
-    list_filter = ['author']
+    list_filter = []
     search_fields = ['title', 'content']
-    fields = ['title', 'author', 'content',  'created_at', 'updated_at',]
+    fields = ['title',  'content',  'created_at', 'updated_at',]
     readonly_fields = ['created_at', 'updated_at']
     # filter_horizontal = ['tags']
     inlines = [TagInline]
