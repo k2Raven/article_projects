@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accounts.forms import CustomUserCreationForm
 
@@ -44,3 +44,9 @@ class RegisterView(CreateView):
         if not next_url:
             next_url = reverse('webapp:articles')
         return next_url
+
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'user_detail.html'
+    context_object_name = 'user_obj'

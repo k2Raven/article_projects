@@ -29,7 +29,7 @@
                     <a class="nav-link active ms-auto" aria-current="page" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Войти</a>
                     <a class="nav-link active ms-2" aria-current="page" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Регистрация</a>
             {% else %}
-                <p class="my-auto ms-auto">Здравствуйте, {% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user }}{% endif %}</p>
+                <a href="{%  url 'accounts:profile' request.user.pk %}" class="my-auto ms-auto">Здравствуйте, {% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user }}{% endif %}</a>
                 <form action="{% url 'accounts:logout' %}?next={{ request.get_full_path }}" method="post" class="ms-2">
                 {% csrf_token %}
                     <input class="nav-link active" type="submit" value="Выйти">
