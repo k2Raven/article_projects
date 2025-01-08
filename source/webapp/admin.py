@@ -8,7 +8,7 @@ class TagInline(admin.TabularInline):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title',  'created_at']
+    list_display = ['id', 'title', 'author',  'created_at']
     list_display_links = ['id', 'title']
     list_filter = []
     search_fields = ['title', 'content']
