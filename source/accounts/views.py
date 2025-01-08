@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import CreateView, DetailView, UpdateView
 
@@ -50,10 +51,25 @@ class RegisterView(CreateView):
         return next_url
 
 
-class UserDetailView(DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
+    paginate_related_by = 3
+    paginate_related_orphans = 0
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        articles = self.object.articles.order_by('-created_at')
+        paginator = Paginator(articles, self.paginate_related_by, orphans=self.paginate_related_orphans)
+        page_number = self.request.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
+        context['page_obj'] = page_obj
+        context['articles'] = page_obj.object_list
+        context['is_paginated'] = page_obj.has_other_pages()
+        return context
+
+
 
 
 class UserChangeView(UserPassesTestMixin, UpdateView):
