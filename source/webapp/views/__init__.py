@@ -2,6 +2,7 @@ from .articles import (ArticleListView,
                        ArticleCreateView,
                        ArticleDetailView,
                        ArticleUpdateView,
-                       ArticleDeleteView)
+                       ArticleDeleteView,
+                       TestView)
 
 from .comments import CommentsCreateView, CommentsUpdateView, CommentsDeleteView

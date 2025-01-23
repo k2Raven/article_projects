@@ -1,5 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
@@ -8,6 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from webapp.forms import ArticleForm, SearchForm
 from webapp.models import Article
 
+
+class TestView(View):
+    def get(self, request, pk, *args, **kwargs):
+        article = get_object_or_404(Article, pk=pk)
+        return JsonResponse({'test': 'test', 'id': f'article_{article.id}', 'comments_count': article.comments.count()})
 
 
 class ArticleListView(ListView):
